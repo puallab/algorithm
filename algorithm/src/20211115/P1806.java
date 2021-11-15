@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class App {
+public class P1806 {
     static int n,s;
     static ArrayList<Integer> list = new ArrayList<>();
     public static void main(String[] args) throws Exception {
