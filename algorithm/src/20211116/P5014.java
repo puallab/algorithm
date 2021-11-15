@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class App {
+public class P5014 {
     static int f, s, g;
     static int[] dx = new int[2];
     static Queue<Integer> q = new LinkedList<>();
@@ -19,16 +19,16 @@ public class App {
         g = Integer.parseInt(st.nextToken());
         dx[0] = Integer.parseInt(st.nextToken());
         dx[1] = -Integer.parseInt(st.nextToken());
-        if(s == g){
-            System.out.println(0);
-            return;
-        }
         vis = new int[f+1];
         vis[s] = 0; 
         q.add(s);
     }
 
     public static void pro(){
+        if(s == g){
+            System.out.println(0);
+            return;
+        }
         while(!q.isEmpty()){
             int x = q.poll();
             for(int i =0; i<2; i++){
