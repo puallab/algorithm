@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class App {
+public class P19638 {
     static StringBuffer sb = new StringBuffer();
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
