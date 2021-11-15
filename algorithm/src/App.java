@@ -19,16 +19,16 @@ public class App {
         g = Integer.parseInt(st.nextToken());
         dx[0] = Integer.parseInt(st.nextToken());
         dx[1] = -Integer.parseInt(st.nextToken());
-        if(s == g){
-            System.out.println(0);
-            return;
-        }
         vis = new int[f+1];
         vis[s] = 0; 
         q.add(s);
     }
 
     public static void pro(){
+        if(s == g){
+            System.out.println(0);
+            return;
+        }
         while(!q.isEmpty()){
             int x = q.poll();
             for(int i =0; i<2; i++){
