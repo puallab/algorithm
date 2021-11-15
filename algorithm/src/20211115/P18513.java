@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class App {
+public class P18513 {
     static int n, k;
     static Queue<Integer> q = new LinkedList<>();
     static HashSet<Integer> s = new HashSet<>();
