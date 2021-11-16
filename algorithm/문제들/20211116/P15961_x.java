@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class P15961 {
+public class P15961_x {
     static int n, d, k, c;
     static boolean flag = false;
     static ArrayList<Integer> arr = new ArrayList<>();
@@ -21,11 +21,7 @@ public class P15961 {
        for(int i =0; i<n; i++){
            int t = Integer.parseInt(br.readLine());
            arr.add(t);
-
-           //쿠폰의 음식 있는지 확인
-           if(t == c) {
-               flag = true;
-           }
+        
        }
 
        //원형으로 잇기 위해서 k+1개 만큼을 다시 이어 붙여줌.
@@ -48,19 +44,9 @@ public class P15961 {
                 end++;
             }
             if(m == k){
-                //쿠폰이 처음부터 포함
-                if(flag){
-                    //쿠폰 음식 먹고, end이 안먹은 음식인 경우.
-                    if(vis[c] > 0 && vis[arr.get(end)] == 0){
-                        ans = Math.max(ans, cnt+1);
-                    }else{
-                        ans = Math.max(ans, cnt);
-                    }
-                }
-                else{
-                    //쿠폰 음식이 없었던 경우
-                    ans = Math.max(ans, cnt+1);
-                }
+            
+                if(vis[c] == 0) ans = Math.max(ans, cnt+1);
+                else ans = Math.max(ans, cnt);
             }
 
             vis[arr.get(start)]--;
