@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class App {
+public class P15961 {
     static int n, d, k, c;
     static boolean flag = false;
     static ArrayList<Integer> arr = new ArrayList<>();
