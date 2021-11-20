@@ -12,7 +12,7 @@
 
 20211120 <br/>
 - [x] https://www.acmicpc.net/problem/1389
-- [ ] https://www.acmicpc.net/problem/2660
+- [x] https://www.acmicpc.net/problem/2660
 - [ ] https://www.acmicpc.net/problem/11404
 - [ ] https://www.acmicpc.net/problem/2458
 - [ ] https://www.acmicpc.net/problem/10159 <br/>
