@@ -10,8 +10,8 @@
 - [x] <자바의 정석 - 정렬 정독> <br/>
 
 
-20211119 <br/>
-- [ ] https://www.acmicpc.net/problem/1389
+20211120 <br/>
+- [x] https://www.acmicpc.net/problem/1389
 - [ ] https://www.acmicpc.net/problem/2660
 - [ ] https://www.acmicpc.net/problem/11404
 - [ ] https://www.acmicpc.net/problem/2458
