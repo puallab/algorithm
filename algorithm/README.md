@@ -1,5 +1,5 @@
-20211116 스터디 제외 개인적으로 풀 알고리즘 문제<br/>
-<투 포인터><br/>
+스터디 제외 개인적으로 풀 알고리즘 문제<br/>
+20211116 <투 포인터><br/>
 - [x] https://www.acmicpc.net/problem/2559 <br/>
 - [x] https://www.acmicpc.net/problem/15565 <br/>
 - [x] https://www.acmicpc.net/problem/11728 <br/>
@@ -17,4 +17,10 @@
 
 20211122<br/>
 - [x] https://www.acmicpc.net/problem/2458
-- [x] https://www.acmicpc.net/problem/10159 <br/>
+- [x] https://www.acmicpc.net/problem/10159 
+- [x] 프로그래머스 3문제
+
+20211123<br/>
+- [] 프로그래머스 3문제
+- [] 삼성 sw 기출 1문제
+- [] 스터디 앞부분 풀어보기
