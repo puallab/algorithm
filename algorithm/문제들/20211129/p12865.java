@@ -27,24 +27,7 @@ public class Main {
                 if(i == n) ans = Math.max(dp[i][w], ans);
             }
         }
-
-        
         System.out.println(ans);
-
-        
-
     }
-    
-    public static void input() throws Exception{
-        
-
-    }
-
-    public static void pro(){
-        
-    }
-
-   
-    
 }
 
