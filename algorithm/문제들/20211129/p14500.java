@@ -2,7 +2,9 @@ import java.util.*;
 import java.io.*;
 import java.nio.Buffer;
 
-//36분 소요,
+/**
+ *  45분 소요.. 큰 배열 할당할 땐 꼭 재할당이 필요한지 확인.
+ */
 public class Main {
     
     static int n, m;
