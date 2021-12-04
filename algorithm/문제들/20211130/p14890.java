@@ -37,6 +37,8 @@ public class Main {
         int idx = 1;
         while(idx < n){
             int now = ro == 0 ? board[pivot][idx]:board[idx][pivot];
+
+            //같은 경우.
             if(prev == now){
                 cnt++;
             }else{
@@ -75,13 +77,12 @@ public class Main {
     public static void pro(){
         
         int answer = 0;
-        //2*n개 확인
+        //2*n개 줄을 하나씩 확인.
         for(int i = 0; i<2; i++){
             for(int j =0; j<n; j++){
                 answer += checkLoad(i, j);
             }
         }
-
 
         System.out.println(answer);
     
