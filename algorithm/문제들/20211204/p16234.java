@@ -1,6 +1,9 @@
 import java.util.*;
 import java.io.*;
 
+/**
+ *  32분
+ */
 public class p16234 {
     static int n, L, R, gap;
     static int[] dy = {0,0,1,-1};
