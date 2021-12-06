@@ -1,6 +1,6 @@
 public class 오픈채팅방(프로그래머스) {
     
-}
+
 import java.util.*;
 import java.util.*;
 class Solution {
