@@ -1,4 +1,8 @@
 import java.util.*;
+
+ /**
+  *  문제가 요구하는 대로 풀면됨.
+  */
 class Solution {
     
     static int[][] board;
