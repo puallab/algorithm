@@ -2,6 +2,10 @@
 import java.util.*;
 import java.util.Map.Entry;
 import java.io.*;
+
+/**
+ *  개선해야할거 같음.. 좀 복잡했다. 아직 MAP에 익숙하지 않아서 그런가?
+ */
 class Solution {
 
     static boolean[] check = new boolean[11];
@@ -23,7 +27,6 @@ class Solution {
               
             
         }
-        
         
         //s의 부분 문자열 만들어 내기.
         for(int i =k; i<s.length(); i++){
