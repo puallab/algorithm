@@ -6,11 +6,7 @@ public class Main {
     static int t, f;
     static Map<String, Integer> map;
     static int[] root, cnt;
-    static class Node{
-        String n;
-
-    }
-    
+   
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st=  new StringTokenizer(br.readLine());

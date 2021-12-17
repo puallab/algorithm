@@ -16,9 +16,10 @@ public class Main {
     static int[] dist;
 
     public static void main(String[] args) throws Exception {
-       input();
-       int ans = dijkstra(start);
-       System.out.println(ans);
+       //input();
+       int i = 10; 
+       String s = Integer.toString(i);
+       System.out.println(s);
     }
 
     static void input() throws Exception{
