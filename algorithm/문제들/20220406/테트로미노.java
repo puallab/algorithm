@@ -28,6 +28,7 @@ public class 테트로미노{
         m = Integer.parseInt(st.nextToken());
 
         board = new int[n][m];
+        
         vis = new boolean[n][m];
 
         for(int i =0; i<n; i++){
