@@ -60,7 +60,7 @@ public class Main {
     }
 
     static void bfs(int y, int x){
-        Queue<Pair> q = new LinkedList<>():
+        Queue<Pair> q = new LinkedList<>();
         q.add(new Pair(y,x));
         vis[y][x] = true;
 
