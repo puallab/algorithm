@@ -34,6 +34,8 @@ public class boj1062{
 
     static void pro(){
         if(k >= 5) dfs(0, 0, antic);
+        else if(k ==26 ) ans = n;
+        else ans = 0;
         System.out.println(ans);
     }
 
