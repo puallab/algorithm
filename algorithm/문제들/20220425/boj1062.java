@@ -54,10 +54,9 @@ public class boj1062{
 
     static void getAns(int bit){
         int cnt = 0;
-        int nbit = ~bit;
         
         for(int i=0; i<n; i++){
-            if( (nbit&words[i]) == 0) cnt++;
+            if( (bit|words[i]) == bit) cnt++;
         }
         ans = Math.max(ans, cnt);
     }
