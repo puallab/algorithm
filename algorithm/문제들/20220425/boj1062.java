@@ -41,8 +41,10 @@ public class boj1062{
     }
 
     static void dfs(int idx, int picked, int cbit){
+        
+        getAns(cbit);
+
         if(picked == k-5){
-            getAns(cbit);
             return;
         }
 
