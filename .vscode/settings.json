@@ -1,8 +1,9 @@
 {
     "java.project.sourcePaths": [
+        "algorithm/문제들/20220425",
         "algorithm/문제들/20220402",
         "algorithm/문제들/20211202",
         "algorithm/src",
-        "algorithm/문제들/20220425"
+        "algorithm/문제들/20220427"
     ]
 }
