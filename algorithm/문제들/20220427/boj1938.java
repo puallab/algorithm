@@ -126,13 +126,15 @@ public class boj1938 {
             cState = new State(cy, cx, now.shape);
 
         }else{
+
+            //중앙을 기준으로 8방향에 대해 회전가능한지 확인.
             for(int i =0; i<8; i++){
                 int cy = dy[i] + now.y[1];
                 int cx = dx[i] + now.x[1];
                 if(!isRange(cy, cx)) return null;
             }
             
-            // true : -, false :l;
+            // shape = true : ㅡ , false : ㅣ 
             if(now.shape){
                 if(now.x[0] < now.x[1]) cState = new State(new int[]{now.y[0]-1, now.y[1], now.y[2]+1}, new int[]{now.x[0]+1, now.x[1], now.x[2]-1}, false); 
                 else cState = new State(new int[]{now.y[0]+1, now.y[1], now.y[2]-1}, new int[]{now.x[0]-1, now.x[1], now.x[2]+1}, false); 
