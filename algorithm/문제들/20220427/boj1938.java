@@ -22,8 +22,9 @@ public class boj1938 {
 
             if(obj instanceof State){ 
                 State B = (State) obj; 
-                if(this.y[0] == B.y[0] && this.x[0] == B.x[0] && )
-                return true;
+                if(this.y[1] != B.y[1] || this.x[1] != B.x[1]) return false;
+                if(Arrays.equals(this.y, B.y) && Arrays.equals(this.x, B.x)) return true;
+                if(this.y[0] ==B.y[2] && this.y[2] == B.y[0] && this.x[0] ==B.x[2] && this.x[2] == B.x[0]) return true;
             }
 
             return false;
