@@ -52,9 +52,8 @@ public class boj18430 {
 
         int i = idx / m;
         int j = idx % m;
-        if (vis[i][j])
-            dfs(idx + 1, sum);
-        else {
+        
+        if (!vis[i][j]){
             for (int k = 0; k < 4; k++) {
 
                 int ry = shape[k][0][0] + i;
@@ -72,8 +71,9 @@ public class boj18430 {
                 dfs(idx + 1, sum + map[ry][rx] + map[ly][lx] + map[i][j]*2);
                 vis[i][j] = vis[ry][rx] = vis[ly][lx] = false;
             }
-            dfs(idx + 1, sum);
+            
         }
+        dfs(idx + 1, sum);
 
     }
 
