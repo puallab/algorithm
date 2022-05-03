@@ -7,10 +7,12 @@ public class boj18430 {
     static int map[][];
     static boolean vis[][];
     static int ans = 0;
-    static int[][][] shape = { { { 0, 1 }, { -1, 0 } }, // 우 상
-            { { 0, 1 }, { 1, 0 } }, // 우 하
-            { { 0, -1 }, { -1, 0 } }, // 좌 상
-            { { 0, -1 }, { 1, 0 } } }; // 좌 하
+    static int[][][] shape = { 
+            { { 0, 1 }, { -1, 0 } },    // 우 상
+            { { 0, 1 }, { 1, 0 } },     // 우 하
+            { { 0, -1 }, { -1, 0 } },   // 좌 상
+            { { 0, -1 }, { 1, 0 } }     // 좌 하
+            };
 
     public static void main(String[] args) throws Exception {
         input();
@@ -46,7 +48,6 @@ public class boj18430 {
 
         if (idx == m * n) {
             ans = Math.max(sum, ans);
-            //show(sum);
             return;
         }
 
@@ -79,18 +80,5 @@ public class boj18430 {
 
     static boolean isValid(int y, int x) {
         return (y >= 0 && x >= 0 && y < n && x < m);
-    }
-
-    static void show(int sum){
-        System.out.println();
-
-        for(int i =0; i<n; i++){
-            for(int j=0; j<m; j++){
-                if(vis[i][j]) System.out.print("1 ");
-                else System.out.print("0 ");
-            }
-            System.out.println();
-        }
-        System.out.println(sum);
     }
 }
