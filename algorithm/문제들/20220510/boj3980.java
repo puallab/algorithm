@@ -3,7 +3,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class boj3980 {
+public class Main {
     static int c, ans;
     static int[][] board = new int[11][11];
     static boolean[] position = new boolean[11];
@@ -39,7 +39,9 @@ public class boj3980 {
 
         for(int i =0; i<11; i++){
             if(position[i] || board[number][i] ==0) continue;
+            position[i] = true;
             dfs(number+1, sum + board[number][i]);
+            position[i] = false;
         }
     }
 }
