@@ -3,7 +3,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main {
+public class boj3980 {
     static int c, ans;
     static int[][] board = new int[11][11];
     static boolean[] position = new boolean[11];
