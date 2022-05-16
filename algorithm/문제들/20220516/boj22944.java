@@ -63,7 +63,8 @@ public class boj22944 {
 
         while(!q.isEmpty()){
             Pair now = q.poll();
-            map[now.y][now.x] = now.hp + now.um;
+            //map[now.y][now.x] = now.hp + now.um;
+            if(now.cnt == n*n+1) break;
             if(board[now.y].charAt(now.x) == 'E'){
                 ans = now.cnt;
                 break;
