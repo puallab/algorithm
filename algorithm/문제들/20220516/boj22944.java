@@ -51,51 +51,10 @@ public class boj22944 {
     }
 
     static void pro() {
-        //dfs(startY, startX, h, 0, 0, new ArrayList<Pair>());
-        bfs(startY, startX);
-        //if(ans == n*n+1) System.out.println(-1);
-        System.out.println(ans);
+        dfs(startY, startX, h, 0, 0);
     }
 
-    static void bfs(int y, int x){
-        Queue<Pair> q = new LinkedList<>();
-        q.add(new Pair(y,x,h,0,0));
-
-        while(!q.isEmpty()){
-            Pair now = q.poll();
-            //map[now.y][now.x] = now.hp + now.um;
-            if(now.cnt == n*n+1) break;
-            if(board[now.y].charAt(now.x) == 'E'){
-                ans = now.cnt;
-                break;
-            }
-
-            if(now.hp < 0) continue;
-
-            for(int i =0; i<4; i++){
-
-                int yy = now.y+dy[i], xx = now.x+dx[i];
-                if(yy<0 || xx <0 || yy>=n || xx>=n) continue;
-                
-
-                int uu =now.um; 
-                int hh = now.hp;
-                if(board[now.y].charAt(now.x) == 'U') uu = d;
-
-
-                if(uu > 0) uu--;
-                else hh--;
-                if(map[yy][xx] > uu+hh) continue;
-                map[now.y][now.x] = uu+ + hh;              
-                q.add(new Pair(yy, xx, hh, uu, now.cnt+1));
-        
-            }
-
-        }
-
-    }
-
-    static void dfs(int y, int x, int hp, int um, int cnt, List<Pair> list){
+    static void dfs(int y, int x, int hp, int um, int cnt){
         if(board[y].charAt(x) == 'E'){
             ans = Math.min(cnt, ans);
             //show(list);
@@ -128,7 +87,7 @@ public class boj22944 {
 
             map[yy][xx] = hp + um;
             //list.add(new Pair(yy, xx));
-            dfs(yy, xx, hp, um, cnt+1, list);
+            dfs(yy, xx, hp, um, cnt+1);
             //list.remove(list.size()-1);
         }
 
