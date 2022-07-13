@@ -2,3 +2,5 @@
 algorithm/bin/
 algorithm/src/
 algorithm/.vscode/
+algorithm/src/Main.java
+algorithm/bin/Main.class
