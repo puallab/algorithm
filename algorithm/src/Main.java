@@ -19,42 +19,39 @@ public class Main{
             w[i] = Integer.parseInt(st.nextToken());
         }
         
-        dfs(0,  new boolean[n]);
+        dfs(0);
         
         System.out.println(ans);
     }
 
-    static void dfs(int idx,  boolean[] check){
+    static void dfs(int idx){
         if(idx == n){
-            ans = Math.max(ans, getCnt(check));
+            ans = Math.max(ans, getCnt());
             return;
         }
         boolean broken = false;
-        if(check[idx]) dfs(idx+1, check);
+        if(d[idx] <= 0) dfs(idx+1);
         else{
             for(int i=0; i<n; i++){
-                if(check[i] || idx == i) continue;
+                if(d[idx] <= 0 || idx == i) continue;
                 d[idx] -= w[i];
                 d[i] -= w[idx];
-                if(d[idx] <= 0) check[idx] = true;
-                if(d[i] <= 0) check[i] = true;
+                
                 broken = true;
-                dfs(idx+1, check);
-    
-                if(d[idx] <= 0) check[idx] = false;
-                if(d[i] <= 0) check[i] = false;
+                dfs(idx+1);
+               
                 d[idx] += w[i];
                 d[i] += w[idx];
             }
-            if(!broken) dfs(idx+1, check);
+            if(!broken) dfs(idx+1);
         }
         
     } 
 
-    static int getCnt(boolean[] check){
+    static int getCnt(){
         int val = 0;
         for(int i =0; i<n; i++){
-            if(check[i]) val++;
+            if(d[i] <= 0) val++;
         }
         return val;
     }
