@@ -1,8 +1,4 @@
-import java.io.*;
-import java.util.*;
-
-
-public class Main{
+public class boj18430 {
     static int n,m, ans;
     static boolean[][] board;
     static int[][] map;
@@ -74,6 +70,4 @@ public class Main{
 
         return rVal;
     }
-
-    
 }
