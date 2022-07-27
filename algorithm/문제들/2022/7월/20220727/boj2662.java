@@ -1,9 +1,4 @@
-import java.io.*;
-import java.util.*;
-
-
-public class Main{
-    
+public class boj2662 {
     static int n;
     static boolean flag = false;
     public static void main(String[] args) throws IOException{
@@ -39,6 +34,4 @@ public class Main{
 
         return true;
     }
-
 }
-
