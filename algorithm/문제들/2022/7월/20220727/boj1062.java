@@ -1,8 +1,4 @@
-import java.io.*;
-import java.util.*;
-
-
-public class Main{
+public class boj1062{
     static int n, k, alpha, ans, antic =  1<<'a'-'a' | 1 <<'t'-'a' | 1<< 'i'-'a' | 1 <<'c'-'a' | 1<<'n'-'a';
     static int[] nbits;
     public static void main(String[] args) throws IOException{
@@ -44,6 +40,4 @@ public class Main{
 
         return val;
     }
-
 }
-
