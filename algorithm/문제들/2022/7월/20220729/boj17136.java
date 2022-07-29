@@ -1,10 +1,4 @@
-import java.io.*;
-import java.util.*;
-
-import javax.management.Descriptor;
-
-
-public class Main{
+public class boj17136 {
     static int[][] board = new int[10][10];
     static boolean[][] vis = new boolean[10][10];
     static int ans = 101, remain;
@@ -93,6 +87,4 @@ public class Main{
         }
 
     }
-
 }
-
