@@ -1,3 +1,5 @@
+import java.io.*;
+import java.util.*;
 public class boj17136 {
     static int[][] board = new int[10][10];
     static boolean[][] vis = new boolean[10][10];
@@ -29,6 +31,9 @@ public class boj17136 {
     static void dfs(int depth, int idx){
         
         if(idx == 100){
+            if(depth == 5) {
+                showBoard();
+            }
             ans = Math.min(ans, depth);
             return;
         }
@@ -67,7 +72,7 @@ public class boj17136 {
 
         for(int i =y; i<= y+k; i++){
             for(int j =x; j <= x+k; j++){
-                if(board[i][j] == 0 ) return false;
+                if(board[i][j] == 0  || vis[i][j]) return false;
             }
         }
         
@@ -85,6 +90,15 @@ public class boj17136 {
                 vis[i][j] = val;
             }
         }
+    }
 
+    static void showBoard(){
+        for(int i =0; i< 10; i++){
+            for(int j =0; j<10; j++){
+                System.out.print(vis[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("\n\n");
     }
 }

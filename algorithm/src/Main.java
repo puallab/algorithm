@@ -7,7 +7,7 @@ import javax.management.Descriptor;
 public class Main{
     static int[][] board = new int[10][10];
     static boolean[][] vis = new boolean[10][10];
-    static int ans = 101, remain;
+    static int ans = 101;
     static int[] cnt = new int[]{5, 5, 5, 5, 5};
     static boolean flag = false;
 
@@ -20,9 +20,7 @@ public class Main{
             for(int j =0; j<10; j++){
                 int k = Integer.parseInt(st.nextToken());
                 board[i][j] = k;
-                if(k == 1){
-                    remain += 1;
-                }
+                
             }
         }
 
