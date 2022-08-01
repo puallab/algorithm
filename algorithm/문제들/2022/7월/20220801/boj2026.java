@@ -1,8 +1,4 @@
-import java.io.*;
-import java.util.*;
-
-
-public class Main{
+public class boj2026 {
     static int n,k,f;
     static boolean[][] friends;
     static List<Integer> list = new ArrayList<>();
@@ -67,6 +63,3 @@ public class Main{
         }
         return true;
     }
-
-}
-
