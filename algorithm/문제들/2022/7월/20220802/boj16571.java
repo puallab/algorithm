@@ -1,9 +1,4 @@
-import java.io.*;
-import java.security.interfaces.RSAKey;
-import java.util.*;
-
-
-public class Main{
+public class boj16571 {
     static int[][] board = new int[3][3];
     static List<Integer> list = new ArrayList<>();
     static int player, cnt;
@@ -28,22 +23,21 @@ public class Main{
             player = 2;
         }
         cnt = list.size();
-        ans = dfs(player, list.get(list.size()-1), 0);
+        ans = -dfs(player, list.get(list.size()-1), 0); // 가장 중요..!! 항상 return 값은 상대방 입장에서 생각하므로 반대로 나온다.
 
-        if(ans == -1){
+        if(ans == 1){
             System.out.println("W");
-        }else if( ans == 1){
+        }else if( ans == -1){
             System.out.println("L");
         }else{
             System.out.println("D");
         }
 
-        //printStrignBuilder();
         
     }
 
     static int dfs(int turn, int idx, int depth){
-        //showBoard(depth, 3-turn);
+        
         if(isGameOver(idx)){
             return 1;
         }
@@ -92,37 +86,6 @@ public class Main{
         return false;
     }
 
-    static void showBoard(int depth, int turn){
-       System.out.print("\ndepth =" + depth + " turn = " +turn + "\n");
-        for(int i =0; i<3; i++){
-            for(int j =0; j<3; j++){
-                 System.out.print(board[i][j] + " ");
-            }
-            System.out.print("\n");
-        }
-        
-    }
 
-
-    static void saveSb(int depth, int turn){
-        sb.append("\ndepth =" + depth + " turn = " +turn + "\n");
-        for(int i =0; i<3; i++){
-            for(int j =0; j<3; j++){
-                sb.append( board[i][j] + " ");
-            }
-            sb.append("\n");
-        }
-    }
-
-    static void printStrignBuilder(){
-        File file = new File("./result.txt");
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-            writer.append(sb.toString());
-         
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
+  
 }
-
