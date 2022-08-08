@@ -1,15 +1,7 @@
-import java.io.*;
-import java.util.*;
-
-import javax.swing.SwingUtilities;
-
-
-public class Main{
-    
+public class boj15659 {
     static int n, minValue = Integer.MAX_VALUE, maxValue = Integer.MIN_VALUE;
     static ArrayList<Integer> nums = new ArrayList<>();
     static ArrayList<Integer> opers = new ArrayList<>();
-    static ArrayList<Integer> log = new ArrayList<>();
     static int[] oCnt = new int[4];
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -42,7 +34,6 @@ public class Main{
         for(int i =0; i<4; i++){
             if(oCnt[i] > 0){
                 oCnt[i]--;
-                log.add(i);
                 if(i > 1){
                     int a= nums.get(depth);
                     int b = nums.get(depth+1);
@@ -64,7 +55,6 @@ public class Main{
                     dfs(depth+1, idx+1);
                     opers.remove(opers.size()-1);
                 }
-                log.remove(log.size()-1);
                 oCnt[i]++;
             }
         }
@@ -93,7 +83,4 @@ public class Main{
         }
         return ret;
     }
-
-
 }
-
