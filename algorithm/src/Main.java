@@ -5,84 +5,127 @@ import javax.swing.SwingUtilities;
 
 
 public class Main{
-    
-    static int n, minValue = Integer.MAX_VALUE, maxValue = Integer.MIN_VALUE;
-    static ArrayList<Integer> nums = new ArrayList<>();
-    static ArrayList<Integer> opers = new ArrayList<>();
-    static ArrayList<Integer> log = new ArrayList<>();
-    static int[] oCnt = new int[4];
+    static int[][] board = new int[3][3];
+    static List<Integer> list = new ArrayList<>();
+    static int player, cnt;
+    static int ans;
+    static StringBuilder sb =new StringBuilder();
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        n = Integer.parseInt(br.readLine());
-
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        for(int i =0; i<n; i++){
-            int k = Integer.parseInt(st.nextToken());
-            nums.add(k);
-        }
-
-        st = new StringTokenizer(br.readLine());
-        for(int i =0; i<4; i++){
-            oCnt[i] =Integer.parseInt(st.nextToken());
-        }
-
-        dfs(0, 0);
-        System.out.println(maxValue + "\n" + minValue);
-       
-    }
-
-    static void dfs(int depth, int idx){
-        if(idx == n-1 ){
-            int val = getAns();
-            minValue = Math.min(val, minValue);
-            maxValue = Math.max(val, maxValue);
-            return;
-        }
-
-        for(int i =0; i<4; i++){
-            if(oCnt[i] > 0){
-                oCnt[i]--;
-                log.add(i);
-                if(i > 1){
-                    int a= nums.get(depth);
-                    int b = nums.get(depth+1);
-                    if(i == 3 && b == 0) {
-                        continue;
-                    }
-                    int k = calc(i, a, b);
-                    nums.remove(depth);
-                    nums.remove(depth);
-                    nums.add(depth, k);
-
-                    dfs(depth, idx+1);
-
-                    nums.remove(depth);
-                    nums.add(depth, b);
-                    nums.add(depth, a);
-                }else{
-                    opers.add(i);
-                    dfs(depth+1, idx+1);
-                    opers.remove(opers.size()-1);
+        StringTokenizer st; 
+        for(int i=0 ;i <3; i++){
+            st = new StringTokenizer(br.readLine());  
+            for(int j =0; j<3; j++){
+                board[i][j] = Integer.parseInt(st.nextToken());
+                if(board[i][j] == 0 ){
+                    list.add(3*i+j);
                 }
-                log.remove(log.size()-1);
-                oCnt[i]++;
             }
         }
+
+        if(list.size() % 2 != 0){
+            player = 1;
+        }else{
+            player = 2;
+        }
+        cnt = list.size();
+        dfs(player, list.get(list.size()-1));
+
+        if(ans == 1){
+            System.out.println("W");
+        }else if( ans == -1){
+            System.out.println("L");
+        }else{
+            System.out.println("D");
+        }
+
+        //printStrignBuilder();
+        
     }
 
-    static int calc(int oper, int a, int b){
-        switch (oper) {
-            case 0:
-                return a+b;
-            case 1:
-                return a-b;
-            case 2:
-                return a*b;
-            case 3:
-                return a/b;
+    static int dfs(int turn, int idx, int depth){
+        //showBoard(depth, 3-turn);
+        if(isGameOver(idx)){
+            return 1;
         }
         return -1;
 
+        if(cnt == 0){
+            return 0;
+        }
+
+        int result =-2;
+
+        for(int i : list){
+            if(depth ==1){
+                int k=3;
+            }
+            if(result == 1) break;
+            int y = i/3;
+            int x = i%3;
+            if(board[y][x] == 0){
+                board[y][x] = turn;
+                cnt -= 1;
+                result = Math.max(dfs(3-turn, i, depth+1), result); //최고의 선택에 대한 결과가 들어 있음. 1,0,-1
+                cnt += 1;
+                board[y][x] = 0;
+            }
+        }
+        
+        return -result;
+>>>>>>> a8df62cb5be4906af008d110af7a0f5a8a72ff36
+    }
+
+    static boolean isGameOver(int idx){
+        int y = idx/3;
+        int x = idx%3;
+        int k = board[y][x];
+
+        if(k == 0) return false;
+        //가로, 세로
+        if(board[y][0] == board[y][1] && board[y][0] == board[y][2]) return true;
+        if(board[0][x] == board[1][x] && board[0][x] == board[2][x]) return true;
+<<<<<<< HEAD
+
+        // 좌상 대각선
+        if(y+x ==2 && board[2][0] == board[1][1] && board[0][2] == board[1][1]) return true;
+
+        // 우상 대각선
+        if(y == x && board[0][0] == board[1][1] && board[2][2] == board[1][1]) return true;
+        
+        return false;
+    }
+
+    static void showBoard(){
+        System.out.println("\n");
+        for(int i =0; i<3; i++){
+            for(int j =0; j<3; j++){
+                System.out.print( board[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("\n");
+    }
+=======
+        
+        // 좌상 대각선
+        if( y+x ==2 &&board[2][0] == board[1][1] && board[0][2] == board[1][1]) return true;
+
+        // 우상 대각선
+        if(y == x &&board[0][0] == board[1][1] && board[2][2] == board[1][1]) return true;
+        
+        return false;
+    }
+
+    static void showBoard(int depth, int turn){
+       System.out.print("\ndepth =" + depth + " turn = " +turn + "\n");
+        for(int i =0; i<3; i++){
+            for(int j =0; j<3; j++){
+                 System.out.print(board[i][j] + " ");
+            }
+            System.out.print("\n");
+        }
+        
     }
 
 
@@ -94,6 +137,15 @@ public class Main{
         return ret;
     }
 
-
+    static void printStrignBuilder(){
+        File file = new File("./result.txt");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            writer.append(sb.toString());
+         
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
 }
 
