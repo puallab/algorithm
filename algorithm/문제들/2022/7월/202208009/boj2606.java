@@ -1,7 +1,4 @@
-import java.io.*;
-import java.util.*;
-
-public class Main{
+public class boj2606 {
     static int n, t, ans;
     static boolean[][] board;
     static boolean[] vis;
@@ -41,9 +38,4 @@ public class Main{
 
         }
     }
-
-   
-
-
 }
-
