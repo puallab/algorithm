@@ -1,9 +1,4 @@
-import java.io.*;
-import java.lang.reflect.Array;
-import java.util.*;
-import java.util.concurrent.ArrayBlockingQueue;
-
-public class Main{
+public class boj11725a {
     static int n;
     static int[] parents;
     static ArrayList<Integer>[] board;
@@ -43,12 +38,4 @@ public class Main{
             }
         }
     }
-
-  
-
-    
-   
-
-
 }
-
