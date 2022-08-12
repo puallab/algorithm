@@ -1,7 +1,4 @@
-import java.io.*;
-import java.util.*;
-
-public class Main{
+public class boj2178 {
     static int n, m;
     static String[] board;
     static int[][] dist;
@@ -56,9 +53,4 @@ public class Main{
             }
         }
     }
-
-
-   
-
 }
-
