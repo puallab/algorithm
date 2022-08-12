@@ -1,7 +1,4 @@
-import java.io.*;
-import java.util.*;
-
-public class Main{
+public class boj1325 {
     static int n, m, val;
     static ArrayList<Integer>[] board;
     static boolean[] vis, toSet;
@@ -76,9 +73,4 @@ public class Main{
         }
 
     }
-
-
-   
-
 }
-
