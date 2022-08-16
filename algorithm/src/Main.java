@@ -1,12 +1,15 @@
 import java.io.*;
 import java.util.*;
 
+import javax.swing.colorchooser.ColorSelectionModel;
+
 public class Main{
-    static int n, m;
+    static int n, m, ans;
     static String[] board;
-    static int[][] dist;
+    static boolean[][] vis;
     static int[] dy = {0, 0, 1, -1};
     static int[] dx = {1, -1, 0, 0};
+    static List<Integer> list = new ArrayList<>();
 
     static class Pair{
         int y, x;
@@ -21,44 +24,55 @@ public class Main{
     }
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-
-        n = Integer.parseInt(st.nextToken());
-        m = Integer.parseInt(st.nextToken());
+        n = Integer.parseInt(br.readLine());
         board = new String[n];
-        dist = new int[n][m];
-        for(int i =0; i<n; i++){
-            board[i] =br.readLine();
+        vis = new boolean[n][n];
+        for(int i =0; i<n ;i++){
+            board[i]  = br.readLine();
         }
-       
-        bfs();
-    }
-
-    static void bfs(){
-        Queue<Pair> q = new LinkedList<>();
-        q.add(new Pair(0,0));
-        dist[0][0] =1;
-        while(!q.isEmpty()){
-            Pair now = q.poll();
-            for(int i =0; i<4; i++){
-                int y = now.y+ dy[i];
-                int x = now.x+ dx[i];
-                if(y == n-1 && x == m-1){
-                    System.out.println(dist[now.y][now.x]+1);
-                    return;
-                }
-                if(y < 0 || n <= y || x<0 || m <=x || board[y].charAt(x) =='0' ||dist[y][x] != 0 ){
-                    continue;
-                }
-
-                dist[y][x] = dist[now.y][now.x] +1;
-                q.add(new Pair(y, x));
+        
+        for(int i =0; i<n; i++){
+            for(int j =0; j<n; j++){
+                if(vis[i][j] || board[i].charAt(j) == '0') continue;
+                ans++;
+                list.add(bfs(i,j));
             }
         }
+
+        Collections.sort(list);
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(ans +"\n");
+        for(int k : list){
+            sb.append(k + "\n");
+        }
+
+        System.out.println(sb.toString());
     }
 
+    static int bfs(int y, int x){
+        Queue<Pair> q = new LinkedList<>();
+        q.add(new Pair(y, x));
+        vis[y][x] = true;
+        int ret = 1;
 
-   
+        while(!q.isEmpty()){
+            Pair k = q.poll();
+            for(int i =0; i<4; i++){
+                int yy = dy[i] + k.y;
+                int xx = dx[i] + k.x;
+                if(isValid(yy,xx)){
+                    q.add(new Pair(yy, xx));
+                    vis[yy][xx] = true;
+                    ret++;
+                }
+            }
+        }
+        return ret;
+    }
 
+    static boolean isValid(int y, int x){
+        return ( y>=0 && y <n && x>= 0 && x<n && vis[y][x] == false && board[y].charAt(x) =='1') ;
+    }
 }
 
