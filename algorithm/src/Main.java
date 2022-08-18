@@ -1,11 +1,20 @@
 import java.io.*;
 import java.util.*;
 
+import javax.swing.colorchooser.ColorSelectionModel;
+
 public class Main{
+<<<<<<< HEAD
     static int r, c, n;
     static int[][] board;
+=======
+    static int n, m, ans;
+    static String[] board;
+    static boolean[][] vis;
+>>>>>>> c66a16009bdfedda8d297760e3ad786ca4e7ef29
     static int[] dy = {0, 0, 1, -1};
     static int[] dx = {1, -1, 0, 0};
+    static List<Integer> list = new ArrayList<>();
 
     static class Pair{
         int y, x;
@@ -21,6 +30,7 @@ public class Main{
 
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+<<<<<<< HEAD
         StringTokenizer st = new StringTokenizer(br.readLine());
         r = Integer.parseInt(st.nextToken());
         c = Integer.parseInt(st.nextToken());
@@ -64,10 +74,35 @@ public class Main{
                         board[y][x] = -1;
                     }
                 }
+=======
+        n = Integer.parseInt(br.readLine());
+        board = new String[n];
+        vis = new boolean[n][n];
+        for(int i =0; i<n ;i++){
+            board[i]  = br.readLine();
+        }
+        
+        for(int i =0; i<n; i++){
+            for(int j =0; j<n; j++){
+                if(vis[i][j] || board[i].charAt(j) == '0') continue;
+                ans++;
+                list.add(bfs(i,j));
+>>>>>>> c66a16009bdfedda8d297760e3ad786ca4e7ef29
             }
         }
+
+        Collections.sort(list);
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(ans +"\n");
+        for(int k : list){
+            sb.append(k + "\n");
+        }
+
+        System.out.println(sb.toString());
     }
 
+<<<<<<< HEAD
     static void install(int time){
         for(int i =0; i<r; i++){
             for(int j=0; j<c; j++){
@@ -95,6 +130,31 @@ public class Main{
         System.out.println(sb.toString());
     }
 
+=======
+    static int bfs(int y, int x){
+        Queue<Pair> q = new LinkedList<>();
+        q.add(new Pair(y, x));
+        vis[y][x] = true;
+        int ret = 1;
 
+        while(!q.isEmpty()){
+            Pair k = q.poll();
+            for(int i =0; i<4; i++){
+                int yy = dy[i] + k.y;
+                int xx = dx[i] + k.x;
+                if(isValid(yy,xx)){
+                    q.add(new Pair(yy, xx));
+                    vis[yy][xx] = true;
+                    ret++;
+                }
+            }
+        }
+        return ret;
+    }
+>>>>>>> c66a16009bdfedda8d297760e3ad786ca4e7ef29
+
+    static boolean isValid(int y, int x){
+        return ( y>=0 && y <n && x>= 0 && x<n && vis[y][x] == false && board[y].charAt(x) =='1') ;
+    }
 }
 
