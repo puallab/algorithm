@@ -1,5 +1,5 @@
 public class boj2667 {
-    tatic int n, m, ans;
+    static int n, m, ans;
     static String[] board;
     static boolean[][] vis;
     static int[] dy = {0, 0, 1, -1};
