@@ -71,6 +71,7 @@ public class boj14949 {
                 }
                 sb.append(dist[i][j] + " ");
             }
+            
             sb.append("\n");
         }
 
