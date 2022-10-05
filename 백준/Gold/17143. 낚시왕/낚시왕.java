@@ -104,8 +104,10 @@ public class Main{
     static void move(int idx){
         Shark target = sList[idx];
         int dir = target.dir;
-        int y = target.y + dy[dir]*target.vc;
-        int x = target.x + dx[dir]*target.vc;
+        int modY = 2*(r-1);
+        int modX = 2*(c-1);
+        int y = (target.y + dy[dir]*target.vc)%modY;
+        int x = (target.x + dx[dir]*target.vc)%modX;
         while(true){
             if( y < 0 ){
                 dir = getDir(dir);
