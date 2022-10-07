@@ -103,18 +103,9 @@ public class Main{
             if(isBlue(ny, nx)){
                 return;
             }
-            if(board[ny][nx] != 1){
-                for(int i= loc; i< size; i++){
-                    moveChess(stage[y][x].get(i), ny, nx);
-                }
-            }else{
-                for(int i = size-1; i >= loc; i--){
-                    moveChess(stage[y][x].get(i), ny, nx);
-                }
-            }
-            
-
-        }else if(board[ny][nx] == 1){
+        }
+        
+        if(board[ny][nx] == 1){
             for(int i = size-1; i >= loc; i--){
                 moveChess(stage[y][x].get(i), ny, nx);
             }
