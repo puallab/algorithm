@@ -95,26 +95,24 @@ public class Main{
 			return o1.t-o2.t;
 		} ));
 		pq.add(new Tuple(startY, startX, 0));
-		vis[startY][startX] = 0;
 
 		while(!pq.isEmpty()){
 
 			Tuple now = pq.poll();
+            vis[now.y][now.x] = now.t;
 			for(int i=0; i<4; i++){
 				int y = now.y + dy[i];
 				int x = now.x + dx[i];
-				if(!isValid(y, x) || (vis[y][x] !=0 &&vis[y][x] <= vis[now.y][now.x])|| board[y].charAt(x) =='.' || board[y].charAt(x) == 'A') continue;
+				if(!isValid(y, x) || vis[y][x] !=0 || board[y].charAt(x) =='.' || board[y].charAt(x) == 'A') continue;
 				if(board[y].charAt(x) == 'B'){
 					ans = Math.min(ans , now.t+1);
 				}else if(board[y].charAt(x) =='#'){
-					vis[y][x] = now.t+1;
 					pq.add(new Tuple(y, x, now.t+1));
 				}else{
 					//교차로인 경우
 					int sIdx = board[y].charAt(x)-'0';
 					int waitTime = getWaitTime(sIdx, i , now);
-					vis[y][x] = now.t + waitTime + 1;
-					pq.add(new Tuple(y, x, vis[y][x]));
+					pq.add(new Tuple(y, x, vis[y][x] + now.t + waitTime + 1));
 				}
 			}
 		}
