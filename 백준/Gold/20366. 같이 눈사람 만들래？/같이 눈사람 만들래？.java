@@ -3,54 +3,59 @@ import java.io.*;
 
 public class Main{
 	static int n;
-	static long ans = Long.MAX_VALUE;
-	static long[] arr;
+	static int ans = Integer.MAX_VALUE;
+	static int[] arr;
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
 		n = Integer.parseInt(br.readLine());
 		st = new StringTokenizer(br.readLine());
-		arr = new long[n];
+		arr = new int[n];
 		for(int i =0; i<n; i++){
-			arr[i] = Long.parseLong(st.nextToken());
+			arr[i] = Integer.parseInt(st.nextToken());
 		}
 
 		Arrays.sort(arr);
 
 		for(int i =0; i<n; i++){
-			for(int j =i+3; j<n; j++){
+			for(int j =i+1; j<n; j++){
 				ans = Math.min(ans, getGap(i, j));
+				if(ans == 0) {
+					System.out.println(0);
+					return;
+				}
 			}
 		}
 		System.out.println(ans);
 	}
 
-	static long getGap(int p1, int p2){
+	static int getGap(int p1, int p2){
 		int left = 0, right =n-1;
-		long val = arr[p1]+arr[p2];
-		long ret = Long.MAX_VALUE;
-		if(left == p1){
-			left += 1;
-		}
-		if(right == p2){
-			right -= 1;
-		}
-
+		int val = arr[p1]+arr[p2];
+		int ret = Integer.MAX_VALUE;
+	
 		while(left < right){
 
-			long gap = arr[left] + arr[right];
-			ret = Math.min(ret, Math.abs(gap-val));
-			if(gap == val) return 0;
-			
-			if(gap < val){
-				left += 1;
-			}else{
-				right -= 1;
+			if(left == p1 || left == p2) {
+				left++;
+				continue;
+			}
+			if(right == p1 || right == p2){
+				right--;
+				continue;
 			}
 
-			if(left == p1 || left == p2) left += 1;
-			if(right == p1 || right == p2) right -=1;
+			int sum = arr[left] + arr[right];
+			ret = Math.min(ret, Math.abs(sum-val));
+	
+			if(sum < val){
+				left++;
+			}else if (sum > val){
+				right--;
+			}else{
+				return 0;
+			}
 		}
 		return ret;
 	}
