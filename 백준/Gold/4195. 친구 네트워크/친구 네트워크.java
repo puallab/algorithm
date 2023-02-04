@@ -37,11 +37,6 @@ public class Main{
 				int pbIdx = find(map.get(b));
 				if(paIdx == pbIdx){
 					sb.append(friends[paIdx]).append("\n");
-				}
-				else if(paIdx < pbIdx){
-					union(paIdx, pbIdx);
-					sb.append(friends[find(paIdx)]).append("\n");
-					
 				}else{
 					union(pbIdx, paIdx);
 					sb.append(friends[find(pbIdx)]).append("\n");
