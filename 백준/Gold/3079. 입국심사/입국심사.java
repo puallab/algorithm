@@ -10,6 +10,7 @@ public class Main{
 		n = Integer.parseInt(st.nextToken());
 		m = Integer.parseInt(st.nextToken());
 		t = new int[n];
+        //long ...
         long max=0;
 		for(int i=0; i<n; i++){
 			t[i] = Integer.parseInt(br.readLine());
@@ -36,6 +37,7 @@ public class Main{
 		long cnt = 0;
 		for(int i =0; i<n; i++){
 			cnt += time/t[i];
+            if(cnt >= m) return m;
 		}
 		return cnt;
 	}
