@@ -1,89 +1,39 @@
 import java.util.*;
 import java.io.*;
+
 class Solution {
-    static class Pair{
-        int year, month, day;
-        String type;
-        public Pair(int y, int m, int d, String b){
-            year = y;
-            month = m;
-            day = d;
-            type = b;
-        }
-        
-        public void addMonth(int mm){      
-            this.year += mm/12;
-            mm = mm%12;
-            
-            this.month += mm;
-            if(this.month > 12){
-                this.month -= 12;
-                this.year += 1;
-            }
-            
-        }
-    }
     static Map<String, Integer> termMap = new HashMap<>();
-    static Pair today;
-    static Pair[] prv;
-    public List<Integer> solution(String tod, String[] terms, String[] privacies) {
-       
+    static int date;
+    public List<Integer> solution(String today, String[] terms, String[] privacies) {
         List<Integer> answer = new ArrayList<>();
-        init(tod, terms, privacies);
-        
-        for(int i =0; i<prv.length; i++){
-            
-            if(isValid(prv[i])) continue;
-            answer.add(i+1);
-        }
-        
-        return answer;
-    }
-    
-    static boolean isValid(Pair target){
-        
-        int termDay = termMap.get(target.type);
-        target.addMonth(termDay);
-        
-        if(today.year == target.year) {
-            if(today.month == target.month){
-                if(today.day >= target.day){
-                    return false;
-                }
-            }
-            else if(today.month > target.month) return false;
-        }
-        else if(today.year > target.year) return false;
-        
-        return true;
-    }
-    
-    static void init(String td, String[] terms, String[] pri){
-        StringTokenizer st = new StringTokenizer(td, ".");
-        int y = Integer.parseInt(st.nextToken());
-        int m = Integer.parseInt(st.nextToken());
-        int d = Integer.parseInt(st.nextToken());
-        
-        today = new Pair(y, m, d, "c");
+        StringTokenizer st;
+        date = getDate(today);
         
         for(int i =0; i<terms.length; i++){
             st = new StringTokenizer(terms[i], " ");
             termMap.put(st.nextToken(), Integer.parseInt(st.nextToken()));
         }
         
-        prv = new Pair[pri.length];
-        for(int i =0; i<pri.length; i++){
-            st = new StringTokenizer(pri[i], " ");
-            String yyyymmdd = st.nextToken();
-            String type = st.nextToken();
+        for(int i =0; i<privacies.length; i++){
+            st = new StringTokenizer(privacies[i], " ");
+            int prDate = getDate(st.nextToken());
+            int addMonth = termMap.get(st.nextToken());
             
-            st = new StringTokenizer(yyyymmdd, ".");
-            y = Integer.parseInt(st.nextToken());
-            m = Integer.parseInt(st.nextToken());
-            d = Integer.parseInt(st.nextToken());
+            prDate = prDate + addMonth*28;
             
-            prv[i] = new Pair(y, m, d, type);
+            if(date < prDate) continue;
+            answer.add(i+1);
         }
         
+        return answer;
+    }
+    
+    static int getDate(String s){
+        StringTokenizer st = new StringTokenizer(s , ".");
+        int yy = Integer.parseInt(st.nextToken());
+        int mm = Integer.parseInt(st.nextToken());
+        int dd = Integer.parseInt(st.nextToken());
+        
+        return yy*12*28 + mm*28 + dd;
     }
 }
