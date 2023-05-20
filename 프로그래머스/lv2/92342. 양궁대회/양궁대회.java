@@ -1,58 +1,67 @@
 import java.util.*;
 class Solution {
-    static int[] list = new int[11];
-    static int[] answer ;
-    static int max = 0;
-    
+static int gapPoint =0;
+    static int[] ans;
     public int[] solution(int n, int[] info) {
-        dfs(n, info, 0);
-        if(max == 0 ){
-            int[] temp = {-1};
-            return temp;
+
+        //피치의 현재 점수 
+        int pPoint = 0;
+        for(int i =0; i < info.length; i++){
+            if(info[i] > 0){
+                pPoint += 10-i;
+            }
         }
-        return answer;
+
+        dfs(n, 0, pPoint, 0, info, new int[11]);
+        if(ans == null) ans = new int[]{-1};
+        return ans;
     }
     
-    static void dfs(int n, int[] info, int idx){
+    static void dfs(int n, int i, int pPoint, int lPoint, int[] peach, int[] lion){
         
-        if(n == 0 || idx == info.length){
-            // 점수 계산.
-            int gap = getPoint(info);
-            //showResult(points);
-            if(gap >= max){
-                max = gap;
-                answer = Arrays.copyOf(list, list.length);
-                answer[10] +=n;
-            }
+        //마지막까지 옴
+        if(i == 10){
+            lion[10] = n; //남은 화살 다 떄려박기
+            if(pPoint<lPoint) calcAns(lion, lPoint-pPoint);
+            lion[10] = 0;
+            return;
+        }
+
+        //화살 다 쏨
+        if(n == 0){
+            if(pPoint < lPoint) calcAns(lion, lPoint-pPoint);
             return;
         }
         
-        if(n > info[idx]){
-            list[idx] = info[idx]+1;
-            dfs(n-info[idx]-1, info, idx+1);
-            list[idx] = list[idx] - (info[idx]+1);
+        //이번판 가져가기  
+        if(peach[i] < n){
+            lion[i] = peach[i]+1;
+            dfs(n-lion[i], i+1, peach[i]>0?pPoint-(10-i):pPoint ,lPoint+10-i , peach, lion);
+            lion[i] = 0;
         }
-        
-        dfs(n, info, idx+1);   
+        //이번판 안가져가기
+        dfs(n, i+1, pPoint,lPoint, peach, lion);
     }
-    
-    static int getPoint(int[] info){
-        // 0 : 어피치, 1: 라이언 
-        int[] points = new int[2];
-        for(int i =0; i< info.length; i++){
-            int point = 10-i;
-            if(info[i] == 0 && list[i] ==0) continue;
-            else if(info[i] >= list[i]) points[0] += point;
-            else points[1] += point;
-        }
+
+    static void calcAns(int[] lion, int point){
+
+        //점수 계산 ㅋㄷㅋㄷ
+        if(gapPoint > point ) return;
         
-        return points[1] - points[0];
-    }
-    
-    static void showResult(int[] gap){
-        for(int i =0; i< list.length; i++){
-            System.out.print(list[i] + " ");
+        if(gapPoint < point){
+            ans = Arrays.copyOf(lion, lion.length);
+            gapPoint = point;
+            return;
         }
-        System.out.println("->" + gap[0] +  ", " + gap[1]);
+
+        // 같을 경우 비교 해야해
+        for(int i= 10; i>= 0; i--){
+            if(ans[i] > lion[i]) return;
+            
+            if(ans[i] < lion[i]){
+                ans = Arrays.copyOf(lion, lion.length);
+                return;
+            }
+        }
     }
 }
